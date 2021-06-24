@@ -9,12 +9,21 @@ import SwiftUI
 
 struct ContentView5: View {
     @StateObject var viewRouter: ViewRouter
-    @ObservedObject var ansOne: answer
-    @ObservedObject var ansTwo: answer
-    @ObservedObject var ansThree: answer
-    @ObservedObject var ansFour: answer
+    @StateObject var ansOne: answer
+    @StateObject var ansTwo: answer
+    @StateObject var ansThree: answer
+    @StateObject var ansFour: answer
     var body: some View {
-        Text("entry one \(ansOne.ans) entry two \(ansTwo.ans) entry three \(ansThree.ans) entry four \(ansFour.ans)")
+        VStack{
+        Text("Yesterday we went shopping at \(ansOne.ans). At the store you bought \(ansTwo.ans). Then you went to your favourite restaurant \(ansThree.ans). At the restaurant you ordered \(ansFour.ans).")
+            Button("Make new story", action:{
+                viewRouter.currentPage = .page1
+                ansOne.ans = ""
+                ansTwo.ans = ""
+                ansThree.ans = ""
+                ansFour.ans = ""
+            })
+    }
     }
 }
 
